@@ -18,7 +18,7 @@ class Category(models.Model):
   status = models.BooleanField(default=True)
 
   def __str__(self):
-    return f'{self.name} - {self.description}' # Para poder recuperar datos
+    return f'{self.name} - {self.description}' # Para poder recuperar datos y los datos que llamemos metodo 3 de serializers.py
 
 
 class Book(models.Model):    
@@ -29,6 +29,7 @@ class Book(models.Model):
   author = models.ForeignKey(Author, on_delete=models.CASCADE) #Recibe la clase Author para poder leer su id
   category = models.ForeignKey(Category, on_delete=models.CASCADE) #Como en SQL borra los registros que tengan conexion en forma de cascada
 
+  # Con el metodo 3 aqui se modifica lo que se va a mostrar en el formulario desde serializers.py
   def __str__(self):
     return f'{self.title} - {self.isbn} - {self.author.first_name}' # Para poder recuperar datos
 
